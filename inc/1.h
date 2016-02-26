@@ -5,11 +5,6 @@
  *      Author: wangwei69
  */
 
-#ifndef TEST_H_
-#define TEST_H_
 
+void test_1();
 
-
-
-
-#endif /* TEST_H_ */
