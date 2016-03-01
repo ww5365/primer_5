@@ -13,7 +13,7 @@ void test_2(){
 
     void * ptr = nullptr;
     int a = 9;
-    int *ptr = &a;
+    ptr = &a;
     cout <<"the result: " << (*(int*)ptr) <<endl;
 
     //const 引用
@@ -36,14 +36,12 @@ void test_2(){
     cout <<"c2: " <<test <<endl;
 
     // auto： 不知道某个表达式的类型，想使用其返回值，可以使用auto定义类型，编译器自动计算变量类型
-    auto tt = test;  //tt 是const char * 类型，底层const保留
+    auto tt = test;  //tt 是const char * 类型，底层const保留；如果是上层const则不保留
     const auto t3 = 42 ;  //t3 是整形常量
 
     //decltype：想使用某个表达式的类型，但不想使用这个表达式，赋初值；使用decltype将表达式的类型提取出来
     decltype(test) test2 = "szdd"; //test2 是const char*类型
     cout <<"test2: " <<test2 <<endl;
-
-
 
 
 

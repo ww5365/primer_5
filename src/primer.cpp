@@ -9,11 +9,14 @@
 #include <vector>
 #include "1.h"
 #include "2.h"
+#include "3.h"
+
 using namespace std;
 
 int main(){
+
     cout << "hello word!" <<endl;
 
-    test_2();
+    test_3();
 
 }
