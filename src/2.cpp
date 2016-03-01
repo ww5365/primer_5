@@ -25,7 +25,6 @@ void test_2(){
 
     constexpr int  i = 32;  //i 是常量表达式，字面值赋值
     cout << "constexpr: " << i <<endl;
-
     constexpr char *str ="wangwei"; //str 是常量指针，和const不同的地方
     //str[0] = '2';
     cout <<"str:" << str <<endl;
