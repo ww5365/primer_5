@@ -17,6 +17,6 @@ int main(){
 
     cout << "hello word!" <<endl;
 
-    test_3();
+    test_1();
 
 }
