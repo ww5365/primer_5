@@ -10,6 +10,6 @@
 
 void test_3();
 
-
+bool  hex_2_dec(std::string hex,int &res);
 
 #endif /* 3_H_ */

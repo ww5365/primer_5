@@ -66,6 +66,6 @@ char *get_str_3(){
     char tmp[] = "hello world";
     char *str = new char[12];
     memcpy(str,tmp,12);
-    return str;//heap
+    return str;               //heap
 }
 
