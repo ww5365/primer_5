@@ -10,6 +10,8 @@
 #include <sstream>
 #include <vector>
 
+#include <cstddef>
+
 using namespace std;
 
 void test_3(){
@@ -192,7 +194,7 @@ void test_3(){
     it1 = svec1.begin();
     it2 = svec1.end();
     vector<string>::iterator mid = it1 + (it2-it1)/2;//相减，表示迭代器中间差的元算数
-    //迭代器运算实例，实现二分查找
+    //迭代器运算实例: 实现二分查找
     while (mid != it2){  //就一个条件，mid不等于end
         if(*mid == search_for_str){
             cout <<"find just i want : " << *mid <<endl;
@@ -210,7 +212,7 @@ void test_3(){
     //定义时，确定类型和元素个数
     const int SIZE = 10;
     string str_arr[SIZE];
-    char ch1[] = "nihao"; //特殊，有6个字节
+    char ch1[] = "nihao"; //特殊，有6个字节,自动多个'\0'
     char ch2[] ={'n','i','h','a','o'}; //有5个字节 ，列表初始化
 
     int *ptr_arr[10];// 存放整形指针的数组，从右到左，大小10，数组名ptr，存放的类型int *
@@ -219,10 +221,36 @@ void test_3(){
 
     int *(&pArr2)[10] = ptr_arr; //定义数组的引用，从内而外，pArr2是个引用，引用的是含有10个整形指针的数组
 
-    pArr = &ptr_arr;  //pArr 一般是二维数据使用
-
+    pArr = &ptr_arr;  //pArr 一般是二维数据在使用
 
     cout << "finished!" <<endl;
+
+
+    //数组的运算，比较特殊的地方
+
+    int array [] = {2,3,5,8,1,9};
+
+    // c++ 11
+    //int *pbegin = begin(array);  //数值首指针
+    //int *pend = end(array);  //数组尾指针，最后一个元素的下一位置
+
+    //数组和标准库string ,vector， []运算有不同的地方; 索引值可以为负值；
+
+    int *ptr_test = array + 4;
+
+    cout << "array access test[0]: " << ptr_test[0] << endl;
+    cout << "array access test[-1]: " << ptr_test[-1] << endl;  //索引值为负
+
+    //c风格的字符串：涉及的运算，strlen,strcmp,strcat,等，建议使用string库
+
+    //string与C风格的转换
+
+    const char *const_str = "wangwei nihao";
+    string str1_test = const_str; //string 可以用以空字符串结尾的字符数组，来赋值
+    const char *str_2_cstr = str1_test.c_str(); //使用c_str函数
+
+
+
 
 
 
