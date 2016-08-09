@@ -10,6 +10,9 @@
 #include "1.h"
 #include "2.h"
 #include "3.h"
+#include "4.hpp"
+
+
 
 using namespace std;
 
@@ -20,8 +23,6 @@ int main(){
     std::string str = "-4c";
     hex_2_dec(str,res);
     cout <<"hex: " << str << " to: " <<res <<endl;
-
-
-    test_3();
+    test_5();
 
 }

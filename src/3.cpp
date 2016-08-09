@@ -31,10 +31,7 @@ void test_3(){
     cout << "s5:" <<s5 <<endl;
     cout << "input string: "<<endl;
 
-
-
     //////string 类型运算和操作
-
     //c_string 和 string转换
     char str1[] = "wangwei nihao";
     s1 = str1;  //c_string 直接赋给string
