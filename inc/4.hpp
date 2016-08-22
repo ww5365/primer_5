@@ -12,5 +12,6 @@ void test_4();
 
 void test_5();
 
+void test_6();
 
 #endif /* 4_HPP_ */

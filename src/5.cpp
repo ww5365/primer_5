@@ -76,13 +76,16 @@ void test_5(){
         std::cout << "this is test exception " <<std::endl;
 
         if (true){
-            throw runtime_error("wangei test");
+            throw std::runtime_error("wangei test runtime error");
         }
+
     }catch(runtime_error e){
         cout << e.what() <<endl;
+    }catch(std::exception e2){
+        cout << e2.what() <<endl;
+    }catch(...){
+        cout <<"no name exception" <<std::endl;
     }
-
-
 
 
 }

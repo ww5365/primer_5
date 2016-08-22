@@ -23,6 +23,6 @@ int main(){
     std::string str = "-4c";
     hex_2_dec(str,res);
     cout <<"hex: " << str << " to: " <<res <<endl;
-    test_5();
+    test_6();
 
 }
