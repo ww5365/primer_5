@@ -1,8 +1,8 @@
 /*
- * primer.cpp
+ *  头文件中函数，以primer开头的,紧跟章节号
+ *  比如：primer_2_1_2 标识第2章，第1节第2个问题的discussion；
  *
  *  Created on: 2016年2月26日
- *      Author: wangwei69
  */
 
 #include <iostream>
@@ -19,6 +19,8 @@ using namespace std;
 int main(){
 
     cout << "hello word!" <<endl;
+    primer_2_2_1();
+
     int res= 0;
     std::string str = "-4c";
     hex_2_dec(str,res);
