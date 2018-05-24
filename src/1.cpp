@@ -29,32 +29,98 @@ char *get_str_3(){
     return str;               //heap
 }
 
+
 /*
- *@brief 使用说明
+ * @brief
  *
- *1、引用的使用说明
+ * 1、const
+ * 2、constexpr:c++11
+ * 3、auto:c++11
+ * 4、decltype():c++11
  *
  */
 
-void primer_2_34(){
+//const 变量的作用范围？ 默认情况下文件内有效；定义时使用extern，其它文件中可以通用
+extern int test_const =  random();
 
-//    //引用
-//    int &iref;  //错误，必须要初始化
-//    int i = 10;
-//    int &iref1 = i; //ok
-//    float &iref2 = i; //错误，类型不一致
-//    int &iref3 = 10; //不能使用字面值
+void primer_2_4_5(){
 
+    //void指针：任意类型的指针赋值，再强制转换为想要指针类型
+    void *ptr = nullptr;
+    int a = 9;
+    ptr = &a;
+    cout <<"the result: " << (*(int*)ptr) <<endl;
 
+    //const引用，初始化
+    const int &aa = 10;  //可以使用字面值常量给引用赋初值，但缺少const是不行的
+    const int &aa2 = 2 * test_const; //允许const常量引用，指向表达式；正常引用不可以；
+    /*
+     * 编译器实际过程：
+     * int tmp = 2*test_const; //生成一个临时变量
+     * const int &aa2 = tmp;
+     */
+    cout <<"aa value: " << aa <<endl;
 
+    //指向常量的常量指针
+    const int *const ptr_const = &a; //ptr_const不能改变；*ptr_const中的值也不能改变；
 
+    //constexpr c++ 11 :常量表达式：编译阶段就确定了值；好处？编译阶段检查？更高的效率？
+    //constexpr 用来申明一个变量是常量且必须用常量表达式初始化
 
+    constexpr int  i = 32;  //必须用常量表示式赋值；
+    const int ii = random(); // ii不是常量表达式
 
+    //constexpr int iii = random();//不正确赋值；iii不是常量表示式；
+    cout << "constexpr: " << i <<endl;
+
+    constexpr char *str ="wangwei"; //str 是常量指针;*str中内容可变；constexpr直接修饰str变量；
+    const char *str2 = "wangwei2";  //str2 是指向字符串常量的指针, 不是常量指针；const修饰数据类型
+    cout <<"str:" << str <<endl;
+
+    //c++ 11 using :别名的定义
+    typedef char *string_c1;
+    using string_c2 = char *;  //C++ 11 的新特性，等价于上面的写法
+    const string_c1 test = "wangwei test ";   //test 是常量指针；基本类型是：char* 且const修饰的就是基本类型变量，所以变量test是常量。
+    cout <<"c2: " <<test <<endl;
+
+    // c++11 auto :不知道某个表达式的类型，想使用其返回值，可以使用auto定义类型，编译器自动计算变量类型；auto变量必须要初值；
+    auto tt = test;  //tt 是const char * 类型，底层const保留；如果是上层const则不保留
+    const auto t3 = 42 ;  //t3 是整形常量
+    const auto &t4 = t3; //t4 是整型常量引用
+
+    //c++ 11 decltype :想使用某个变量的类型，但不想使用这个变量，赋初值；使用decltype将变量的类型提取出来
+    decltype(test) test2 = "szdd"; //test2 是const char*类型
+    cout <<"test2: " <<test2 <<endl;
 
 }
 
 
 
+/*
+ *@brief 使用说明
+ *
+ *1、引用的使用说明:
+ *   必须初始化，且只能用变量初始化
+ *   类型保持一直
+ *
+ *
+ */
+
+void primer_2_3_1(){
+
+//    //引用
+//    int &iref;  //错误，必须要初始化
+    int i = 10;
+//    int &iref1 = i; //ok
+//    float &iref2 = i; //错误，类型不一致
+//    int &iref3 = 10; //不能使用字面值
+
+    int *ptr = &i;
+    int *&r_ptr = ptr; //定义并初始化了指向指针的引用
+
+    const int &iref4 = 10; //使用const限定之后，可以使用字面值初始化引用
+
+}
 
 
 /*
@@ -78,10 +144,6 @@ void primer_2_2_1(){
     int __test = 10; //两个_开头
 
     printf("initialization forms:%d %d",_Test, __test);
-
-
-
-
 
 }
 
@@ -210,13 +272,6 @@ void primer_2_1_1(){
     cout << "float bytes: " << sizeof(float) << " rang:"<< numeric_limits<float>::min() << "~" << numeric_limits<float>::max() << " epsilon: " << numeric_limits<float>::epsilon()<< " digits: " <<numeric_limits<float>::digits << endl;
     cout << "double bytes: " << sizeof(double) << " rang:"<< numeric_limits<double>::min() << "~" << numeric_limits<double>::max() << " epsilon: " << numeric_limits<double>::epsilon()<< " digits: " <<numeric_limits<double>::digits << endl;
     cout << "long double bytes: " << sizeof(long double) << " rang:"<< numeric_limits<long double>::min() << "~" << numeric_limits<long double>::max() << " epsilon: " << numeric_limits<long double>::epsilon()<< " digits: " <<numeric_limits<long double>::digits << endl;
-
-
-
-
-
-
-
 
 }
 
