@@ -5,17 +5,42 @@
  *      Author: wangwei69
  */
 
-#include "4.hpp"
+#include <all.hpp>
 #include <string>
 #include <iostream>
+using namespace std;
 
 /*
  * 第四章  表达式
  */
 
 
+/*
+ * const_cast 使用场景：例子
+ */
+
+const string& fun(const string& str1, const string& str2){
+
+    return str1.size() < str2.size() ? str1: str2;
+    //返回长度小的字符串；但如果传入参数是两个非const的string，返回的是const的引用
+    //这种情况，如何返回非const的引用? 如下重载函数
+}
+
+string& fun(string&str1, string& str2){
+
+    const string &result = fun(const_cast<const string&>(str1), const_cast<const string&>(str2));
+    //这样用是安全的，string& -> const string&
+
+    return const_cast<string&>(result);
+}
+
+
+
 void test_4(){
 
+    //求模运算结果？ 负数的
+
+    std::cout << "-17 mod 10 : " << (-17%10) << std::endl;
 
     //前置后置，自增，自减 运算： 建议使用前置版本，提高性能
 
@@ -28,11 +53,19 @@ void test_4(){
 
     unsigned char bits = 0227;
     std::cout <<"bits: " <<bits <<"reverse bit: " <<~bits <<std::endl; //取反：过程是：先提升char（8bit）为int（32），再反转
-
     unsigned long quiz = 17; //检测该无符号长整型，第5 bit是否为0？
-
     bool res = quiz & (1UL << 4); //先获取无符号字面值常量：1UL<<4 再进行与运算
     std::cout << "the res: " <<res <<std::endl;
+
+    //交换两个整数数，不允许中间变量？如何实现
+    //位运算：swap(a,b) ?
+    uint16_t a = 3;
+    uint16_t b = 2;
+    a = a^b;
+    b = a^b;//(a^b)^b ->a 赋给 b ；把a交换到b上
+    a = b^a; // a ^(a^b) ->b 赋给a；把b交换到a上
+    std::cout << "swap a b res:" << a << " " <<b << std::endl;
+
 
 
     //sizeof 运算符号
@@ -79,6 +112,9 @@ void test_4(){
     //int *ptr_exact2 = const_cast<int *>(ptr1);  //错误，不能改变类型
 
     void *ptr_exact3 = const_cast<void *>(ptr1); //正确，仅仅去掉了const属性；不改变类型；
+
+
+
 
 
 

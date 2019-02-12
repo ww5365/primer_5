@@ -14,4 +14,10 @@ void test_5();
 
 void test_6();
 
+void test_7();
+
+void test_8();
+
+void test_9();
+
 #endif /* 4_HPP_ */
