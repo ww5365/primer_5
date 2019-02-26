@@ -20,4 +20,14 @@ void test_8();
 
 void test_9();
 
+void test_10();
+
+void test_11();
+
+void test_12();
+
+void test_text_query();
+
+void test_13();
+
 #endif /* 4_HPP_ */

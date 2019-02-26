@@ -29,7 +29,11 @@ int main(){
     //test_6();
     //test_7();
     //test_8();
+    //test_9();
+    //test_10();
+    //test_11();
 
-    test_9();
+    test_12();
 
+    test_text_query();
 }
