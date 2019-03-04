@@ -6,7 +6,12 @@
  */
 
 #include "all.hpp"
+#include "13.h"
 
+#include <string>
+
+
+using namespace std;
 
 
 
@@ -60,6 +65,7 @@ void test_13(){
      *       foo& operator = (const foo& other){
      *         ....
      *
+     *         [delete *self ]:一般要先释放自身
      *         return *this; //返回自身对象
      *
      *       }
@@ -121,6 +127,9 @@ void test_13(){
         noCopy(const noCopy&) = delete; //定义为删除函数
 
     };
+
+
+
 
 
 
