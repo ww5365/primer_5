@@ -83,8 +83,16 @@ using namespace std;
 
 
 /*
- * topic:
+ * topic: set multiset  关键是否相等，如何判定？
  *   关键字的比较，默认情况下，标准库使用<运算符来比较
+ *
+ *   1、类内部实现： operator<
+ *
+ *   2、单独实现compare函数，并在初始化的时候赋给容器对象
+ *
+ *     multiset<TYPE, decltype(compare)*> obj{compare};
+ *
+ *   为什么定义<就可以了？而且按照关键字从小到大的排序。？
  *
  */
 
@@ -125,12 +133,17 @@ void test_11(){
 
     stu.insert({12,"ni"});
 
+    //mutiset所有元素的遍历
     for (auto it = stu.begin(); it != stu.end(); it ++) {
         cout << "multiset first: " << it->get_ID() << " second: " << it->get_name() << endl;
     }
+    //multiset仅遍历一个关键字, 相同key的元素的个数？
+    for (auto it = stu.cbegin(); it != stu.cend(); it = stu.upper_bound(*it)){
+        cout << "multiset only key: " << it->get_ID() << " " << it->get_name() <<" numbers: "<< stu.count(*it) << endl;
+    }
 
     auto it_1 = stu.lower_bound({11,"wangwei2"});
-    auto it_2 = stu.upper_bound({11,"wangwei"});//都是以id作为比较元素的；返回第一个>11的元素的迭代器；结果指向："ni"
+    auto it_2 = stu.upper_bound({11,"wangwei"});//都是以id作为比较元素的；返回第一个>11的元素的迭代器；也就是key元素的下一个位置；结果指向："ni"
 
     cout << "lower_bound: " << it_1->get_name() << endl;
     cout << "upper_bound: " << it_2->get_name() << endl;
@@ -138,7 +151,6 @@ void test_11(){
     auto it_3 = stu.equal_range({11,"wangwei2"});
 
     cout << "equal range first: " <<it_3.first->get_name() << " second: " << it_3.second->get_name() << endl;
-
 
     //无序容器特有的桶管理操作
 

@@ -163,7 +163,10 @@ void test_12(){
      *          swap(p,q) : 两个智能指针进行交换
      *
      *  特有的操作：
-     *        make_shared<OBJ_TYPE>(args) : 使用args构造OBJ_TYPE类型对象(这个参数需要符合类构造函数的要求)，并返回指向该对象的shared_ptr指针；
+     *        make_shared<OBJ_TYPE>(args) :
+     *        使用args构造OBJ_TYPE类型对象(这个参数需要符合类构造函数的要求)，并返回指向该对象的shared_ptr指针；
+     *
+     *        动态分配内存并初始化；异常安全；
      *
      *        shared_ptr<OBJ_TYPE> p(q) : q 赋给 p，指向同一个对象；q指针计数器增加1；
      *

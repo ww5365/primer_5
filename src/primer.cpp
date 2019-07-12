@@ -19,7 +19,18 @@ using namespace std;
 
 int main(){
 
-    cout << "hello word!" <<endl;
+    test_15_textquery();
+
+    //test_15
+
+    test_15();
+
+    //test_14
+
+    test_14();
+
+
+    //cout << "hello word!" <<endl;
     //primer_2_2_1();
 
     int res= 0;
@@ -31,9 +42,14 @@ int main(){
     //test_8();
     //test_9();
     //test_10();
-    //test_11();
 
-    test_12();
+    //test_10_bind();
 
-    test_text_query();
+    test_11();
+
+    //test_12();
+
+    //test_text_query();
+
+
 }

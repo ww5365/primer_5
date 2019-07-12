@@ -124,7 +124,7 @@ void test_13(){
         noCopy& operator= (const noCopy&); //不能赋值拷贝
     public:
         noCopy() = default; //使用合成版本的默认构造函数
-        noCopy(const noCopy&) = delete; //定义为删除函数
+        noCopy(const noCopy&) = delete; //定义为删除函数,不支持拷贝构造
 
     };
 

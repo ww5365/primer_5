@@ -239,7 +239,9 @@ void test_10(){
      *
      *    不用lambda，又想传递参数给算法中的可调用对象参数部分；
      *
-     *    bind 函数适配器 实际就是用： newCallable(X,Y) 来真正调用 callable(..,X,Y)
+     *    bind 函数适配器 实际就是用： newCallable(X,Y) 来真正调用 int callable(..,X,Y)
+     *
+     *    建立 fun <=> newfun 之间的等价关系
      *
      *    auto newCallable = bind(callable, ARG_LIST);
      *
@@ -247,6 +249,13 @@ void test_10(){
      *    ARG_LIST: 占位符： _1 代表newCallable的第一个参数，依次类推。定义在空间:placeholders
      *
      *              要使用外部参数的引用，怎么办？都是值拷贝。。通过：ref，cref,把引用值传给callable函数
+     *
+     *
+     *    bind返回的数据类型是什么？
+     *
+     *    function<原函数返回值类型(原函数参数列表)>
+     *
+     *    newCallable 的类型：function<int(..., X, Y)>
      *
      *
      */
@@ -291,7 +300,7 @@ void test_10(){
 
     // bind
     auto bigger_len_new = bind(bigger_len, _1, sz); //_1:占位符 代表cmp_len_new的第一个参数;sz是值拷贝的方式传递；引用方式？ref,cref
-    //调用cmp_len_new(str), 相当于调用bigger_len(str,sz)
+    //调用bigger_len_new(str), 相当于调用bigger_len(str,sz)
     auto it6_2 = find_if(vec6.begin(), vec6.end(), bigger_len_new); //bind产生新的可调用对象：cmp_len_new 一元谓词
     cout << "find_if_2: " << *it6_2 << endl;  //指向abcde的位置
 
@@ -338,7 +347,7 @@ void test_10(){
     for_each(dec8.begin(), dec8.end(), [](const string &s) {cout << "front inserter: " << s << endl;});
 
     //inserter
-    copy(l7.begin(), l7.end(), inserter(dec9, dec9.begin())); //inserter返回值，一直保持在原位置上；
+    copy(l7.begin(), l7.end(), inserter(dec9, dec9.begin())); //inserter返回值，一直保持在原来迭代器位置上；
     string tips_str("");
     tips_str.assign("inserter: ");
     auto printstr = bind(print, _1, tips_str); //绑定一个打印函数，后面可以经常配合for_each来使用

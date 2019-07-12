@@ -22,6 +22,8 @@ void test_9();
 
 void test_10();
 
+void  test_10_bind();
+
 void test_11();
 
 void test_12();
@@ -29,5 +31,15 @@ void test_12();
 void test_text_query();
 
 void test_13();
+
+void test_message_strvec();
+
+void test_14();
+
+void test_15();
+void test_15_textquery();
+
+
+
 
 #endif /* 4_HPP_ */
