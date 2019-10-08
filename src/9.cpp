@@ -381,5 +381,16 @@ void test_9(){
 
     }
 
+    //BFS算法中，要借助queue来实现
+
+    std::queue<int, std::deque<int>> qu; //使用deque来作为默认容器
+
+    qu.push(4);//入队
+    qu.push(5);
+    int ele = qu.front(); //取队头元素
+    qu.pop(); //出队
+
+    std::cout<< "elem queue: " << ele << std::endl;
+
 
 }

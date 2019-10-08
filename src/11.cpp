@@ -12,6 +12,7 @@
 #include <map>
 #include <set>
 #include <unordered_map>
+#include <unordered_set>
 
 using namespace std;
 
@@ -125,6 +126,50 @@ public:
 };
 
 
+
+//自定义hash函数
+struct hash_fun{
+    template<class T1, class T2>
+    std::size_t operator()(std::pair<T1, T2> const &val) const{
+        std::size_t first = hash<T1>()(val.first);
+        std::size_t second = hash<T2>()(val.second);
+        return first ^ second;
+    }
+};
+
+
+void test_unordered_set(){
+
+    /*
+     * 使用unordered_set 存储pair对数据？
+     * set<pair<int, int>>  是ok的。
+     * unordered_set<pair<int, int>> 是不ok的
+     *
+     * set 需要operator< 来进行两个key的比较。pair有定义operator<，所以是ok的。
+     * unordered_set，对key要进行hash，因为hash 类不支持pair，所以不ok，需要自己定义hash函数
+     *
+     */
+
+    std::pair<int, int> test1(1,3);
+    std::pair<int, int> test2(1,3);
+
+    std::unordered_set<std::pair<int, int>, hash_fun> u_set;
+
+    //hash_fun tc;
+    //std::pair<int, int> a(1,1);
+    //cout << "hash value: " << tc(a) << endl;
+
+    u_set.insert(test1);
+    u_set.insert(test2);
+    u_set.erase(test1);
+
+
+
+
+
+}
+
+
 void test_11(){
 
     //set<Student> stu {Student(10,"wangwei"),Student(11, "wangwei2"),Student(11, "nihao")};
@@ -181,9 +226,19 @@ void test_11(){
 
     string str("ab");
 
-    hash<string> hash_str;
+    hash<string> hash_str;  //调用运算符()后，返回size_t
     cout << "hash str: " << hash_str(str) << endl;
 
     //如果要用无序容器保存Student类，是需要提供hash函数的？可以考虑下怎么实现。。
+
+    //unordered_set  无序容器，存储时使用key？ hash过的值
+
+    //如何使用unordered_set存储pair对？
+
+    test_unordered_set();
+
+
+
+
 
 }

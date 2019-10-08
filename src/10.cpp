@@ -126,6 +126,7 @@ void test_10(){
      */
 
     vector<string> vec1 = {"wang", "wei", "ni", "hao"};
+    //vec1.pop_back();
 
     //find
     auto it = find(vec1.cbegin(), vec1.cend(), "ni");
@@ -135,8 +136,8 @@ void test_10(){
     }
 
     //accumulate: 求容器中"和"运算；第三个元素类型是初始值，同时必须和容器中元素类型相同；
-    string sum = accumulate(vec1.cbegin(), vec1.cend(), string("")); //第三个元素不能是:"" ？ const char* 不支持 + 运算
-    cout << "only read algorithm: accumulate: " << sum << endl;
+    string sum = accumulate(vec1.cbegin(), vec1.cend(), string(" ")); //第三个元素不能是:"" ？ const char* 不支持 + 运算
+    cout << "only read algorithm: accumulate: " << sum << endl; //结果：？ wangweinihao
 
 
     //equal: 接受3个参数；第3个参数是下个容器的起始迭代器；下个容器长度：大于等于第一个容器；比较元素个数：第一个容器的长度
@@ -157,7 +158,19 @@ void test_10(){
     vector<string> vec2;
 
     //fill:
-    fill(vec2.begin(), vec2.end(), "test"); //vec2还是空的
+    fill(vec2.begin(), vec2.end(), "test"); //vec2是空;因为vec2初始为空,不会改变容器大小
+    vec2.reserve(5);
+    fill(vec2.begin(), vec2.end(), "test2");//因为vec2初始为空,不会改变容器大小
+
+    cout << "test2-----" << endl;
+    for_each(vec2.begin(), vec2.end(), [](const string &s){cout << "test fill " << s << endl;});
+    cout << "test2------------" << endl;
+
+   //数组是可以初始化的
+    int arr[5];
+    fill_n(arr, 5, 0);
+    for_each(arr,arr+4, [](const int &i){cout << "element: " << i << endl;});
+
     //fill_n(vec2.begin(),1, "test"); //错误，向空容器中插入1个元素，改变容器大小了。插入迭代器来解决？？
     fill_n(vec2.begin(), vec2.size(), "test");
 
@@ -175,7 +188,6 @@ void test_10(){
     cout << "write algorithm: copy: " << vec3.size() << endl;
 
 
-
     /*
      * 重排算法：
      *
@@ -184,9 +196,11 @@ void test_10(){
      *
      */
 
+    //按照字典序排序，并去重
 
-    vector<string> vec4 = {"wang", "wei", "ni", "ni","hao", "a", "a"}; //按照字典序排序，并去重
+    vector<string> vec4 = {"wang", "wei", "ni", "ni","hao", "a", "a"};
     sort(vec4.begin(), vec4.end()); //默认使用元素的 < 元素符来比较大小
+
     vector<string>::iterator it4 =  unique(vec4.begin(), vec4.end()); //算法不会改变容器大小；返回不重复元素尾后迭代器；
     vec4.erase(it4, vec4.end()); //调用自带函数，删除多余的，"垃圾"元素
 

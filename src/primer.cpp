@@ -19,15 +19,15 @@ using namespace std;
 
 int main(){
 
-    test_15_textquery();
+    //test_15_textquery();
 
     //test_15
 
-    test_15();
+    //test_15();
 
     //test_14
 
-    test_14();
+    //test_14();
 
 
     //cout << "hello word!" <<endl;
@@ -41,7 +41,7 @@ int main(){
     //test_7();
     //test_8();
     //test_9();
-    //test_10();
+    test_10();
 
     //test_10_bind();
 
