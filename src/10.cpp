@@ -187,6 +187,24 @@ void test_10(){
 
     cout << "write algorithm: copy: " << vec3.size() << endl;
 
+    //实际工作中copy使用，场景
+      //1、把一个小vector中的数据拷贝到一个大的vector中 ？
+
+    vector<int> vec_b = {1,2,3,4,5,6,7};
+    vector<int> vec_s = {8,9,10,11,12,13};
+
+    auto it_start = vec_b.begin();
+    advance(it_start, 3);  //迭代器向前移动3位
+
+    copy(begin(vec_s), end(vec_s), it_start);
+
+    for (auto elem : vec_b){
+        cout << "copy vector into another: " << elem << endl;
+    }
+
+
+
+
 
     /*
      * 重排算法：
@@ -275,10 +293,36 @@ void test_10(){
      */
 
 
-     //谓词使用:
+     /*
+      * 谓词使用:
+      *
+      * sort 函数常使用的比较两个元素的方式
+      *
+      * 1、常用的std可调用对象:普通数据类型比较
+      *    std::less<TYPE>()
+      *    std::greater<TYPE>()
+      * 2、自定义比较函数
+      *    bool cmpfun(const TYPE&left, const Type&right);
+      * 3、自定义比较类
+      *    struct cmpClass{
+      *       bool operator()(const TYPE&left, const TYPE&right){
+      *       }
+      *    }
+      * 4、待排序数据元素是个结构体，重载<运算符
+      *   struct Elem{
+      *     bool operator<(const &Elem){
+      *        return this->val < Elem.val;
+      *     }
+      *   }
+      *
+      *
+      */
 
     //将vec4按照字符串的长度大小进行排列,长度递增；长度相同的按照原来的字段序列；
-    stable_sort(vec4.begin(), vec4.end(), cmp_len); //二元
+
+    //比较函数
+    stable_sort(vec4.begin(), vec4.end(), cmp_len);
+
 
     vector<string> vec5 = {"abcd", "abc", "ab","abcde","a"};
     //partition : 谓词返回true，把元素放到前面；返回false，把元素放到后面；返回：最后一个使谓词为true之后的位置；
@@ -418,7 +462,7 @@ void test_10(){
      *    l1.queue(pre):
      *
      *
-     *    l1.splice()/splice_after(): 剪切另一个链表种元素，放到自己的链表种
+     *    l1.splice()/splice_after(): 剪切另一个链表或自身中的元素，放到本链表的某个位置
      *
      *    (p, l2):       剪切l2中所有元素，放到p之前/之后位置； l1和l2不同
      *
@@ -446,13 +490,16 @@ void test_10(){
     list<int>::iterator it_l1 = ++ l1.begin();  //链表中iterator是一步步滚动？
 
     //splice
-    l1.splice(l1.begin(), l1 , it_l1); //把第2个元素，剪切到首元素之前，结果应该是：5,6,5,4,3,2,2,1;
+    l1.splice(l1.begin(), l1 , it_l1); //把l1中第2个元素，剪切到l1首元素之前，结果应该是：5,6,5,4,3,2,2,1;
 
-    l1.splice(l1.begin(), l1, ++l1.begin(), --l1.end()); //把第二个元素到倒数第二个元素之间的list，剪切到手元素之前；6,5,4,3,2,2,5,1
+    l1.splice(l1.begin(), l1, ++l1.begin(), --l1.end()); //把l1第二个元素到倒数第二个元素之间的list，剪切到手元素之前；6,5,4,3,2,2,5,1
+
+    //最经常使用的是，将链表的某个元素剪切到链表的最后或首元素
+    l1.splice(l1.end(), l1, l1.begin()); //把首元素剪切到尾部
 
     for(auto e : l1){
 
-        cout << "the merge: " << e << endl;
+        cout << "the splice: " << e << endl;
     }
 
 
