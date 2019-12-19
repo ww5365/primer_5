@@ -1,13 +1,14 @@
 /*
  * 1.cpp
  *
- *  Created on: 2016Äê2ÔÂ24ÈÕ
+ *  Created on: 2016å¹´2æœˆ24æ—¥
  *      Author: wangwei69
  */
 
 #include <iostream>
 #include <limits>
 #include <cwchar>
+#include <string>
 #include "1.h"
 using namespace std;
 
@@ -33,63 +34,63 @@ char *get_str_3(){
 /*
  * @brief
  *
- * 1¡¢const
- * 2¡¢constexpr:c++11
- * 3¡¢auto:c++11
- * 4¡¢decltype():c++11
+ * 1ã€const
+ * 2ã€constexpr:c++11
+ * 3ã€auto:c++11
+ * 4ã€decltype():c++11
  *
  */
 
-//const ±äÁ¿µÄ×÷ÓÃ·¶Î§£¿ Ä¬ÈÏÇé¿öÏÂÎÄ¼şÄÚÓĞĞ§£»¶¨ÒåÊ±Ê¹ÓÃextern£¬ÆäËüÎÄ¼şÖĞ¿ÉÒÔÍ¨ÓÃ
+//const å˜é‡çš„ä½œç”¨èŒƒå›´ï¼Ÿ é»˜è®¤æƒ…å†µä¸‹æ–‡ä»¶å†…æœ‰æ•ˆï¼›å®šä¹‰æ—¶ä½¿ç”¨externï¼Œå…¶å®ƒæ–‡ä»¶ä¸­å¯ä»¥é€šç”¨
 extern int test_const =  random();
 
 void primer_2_4_5(){
 
-    //voidÖ¸Õë£ºÈÎÒâÀàĞÍµÄÖ¸Õë¸³Öµ£¬ÔÙÇ¿ÖÆ×ª»»ÎªÏëÒªÖ¸ÕëÀàĞÍ
+    //voidæŒ‡é’ˆï¼šä»»æ„ç±»å‹çš„æŒ‡é’ˆèµ‹å€¼ï¼Œå†å¼ºåˆ¶è½¬æ¢ä¸ºæƒ³è¦æŒ‡é’ˆç±»å‹
     void *ptr = nullptr;
     int a = 9;
     ptr = &a;
     cout <<"the result: " << (*(int*)ptr) <<endl;
 
-    //constÒıÓÃ£¬³õÊ¼»¯
-    const int &aa = 10;  //¿ÉÒÔÊ¹ÓÃ×ÖÃæÖµ³£Á¿¸øÒıÓÃ¸³³õÖµ£¬µ«È±ÉÙconstÊÇ²»ĞĞµÄ
-    const int &aa2 = 2 * test_const; //ÔÊĞíconst³£Á¿ÒıÓÃ£¬Ö¸Ïò±í´ïÊ½£»Õı³£ÒıÓÃ²»¿ÉÒÔ£»
+    //constå¼•ç”¨ï¼Œåˆå§‹åŒ–
+    const int &aa = 10;  //å¯ä»¥ä½¿ç”¨å­—é¢å€¼å¸¸é‡ç»™å¼•ç”¨èµ‹åˆå€¼ï¼Œä½†ç¼ºå°‘constæ˜¯ä¸è¡Œçš„
+    const int &aa2 = 2 * test_const; //å…è®¸constå¸¸é‡å¼•ç”¨ï¼ŒæŒ‡å‘è¡¨è¾¾å¼ï¼›æ­£å¸¸å¼•ç”¨ä¸å¯ä»¥ï¼›
     /*
-     * ±àÒëÆ÷Êµ¼Ê¹ı³Ì£º
-     * int tmp = 2*test_const; //Éú³ÉÒ»¸öÁÙÊ±±äÁ¿
+     * ç¼–è¯‘å™¨å®é™…è¿‡ç¨‹ï¼š
+     * int tmp = 2*test_const; //ç”Ÿæˆä¸€ä¸ªä¸´æ—¶å˜é‡
      * const int &aa2 = tmp;
      */
     cout <<"aa value: " << aa <<endl;
 
-    //Ö¸Ïò³£Á¿µÄ³£Á¿Ö¸Õë
-    const int *const ptr_const = &a; //ptr_const²»ÄÜ¸Ä±ä£»*ptr_constÖĞµÄÖµÒ²²»ÄÜ¸Ä±ä£»
+    //æŒ‡å‘å¸¸é‡çš„å¸¸é‡æŒ‡é’ˆ
+    const int *const ptr_const = &a; //ptr_constä¸èƒ½æ”¹å˜ï¼›*ptr_constä¸­çš„å€¼ä¹Ÿä¸èƒ½æ”¹å˜ï¼›
 
-    //constexpr c++ 11 :³£Á¿±í´ïÊ½£º±àÒë½×¶Î¾ÍÈ·¶¨ÁËÖµ£»ºÃ´¦£¿±àÒë½×¶Î¼ì²é£¿¸ü¸ßµÄĞ§ÂÊ£¿
-    //constexpr ÓÃÀ´ÉêÃ÷Ò»¸ö±äÁ¿ÊÇ³£Á¿ÇÒ±ØĞëÓÃ³£Á¿±í´ïÊ½³õÊ¼»¯
+    //constexpr c++ 11 :å¸¸é‡è¡¨è¾¾å¼ï¼šç¼–è¯‘é˜¶æ®µå°±ç¡®å®šäº†å€¼ï¼›å¥½å¤„ï¼Ÿç¼–è¯‘é˜¶æ®µæ£€æŸ¥ï¼Ÿæ›´é«˜çš„æ•ˆç‡ï¼Ÿ
+    //constexpr ç”¨æ¥ç”³æ˜ä¸€ä¸ªå˜é‡æ˜¯å¸¸é‡ä¸”å¿…é¡»ç”¨å¸¸é‡è¡¨è¾¾å¼åˆå§‹åŒ–
 
-    constexpr int  i = 32;  //±ØĞëÓÃ³£Á¿±íÊ¾Ê½¸³Öµ£»
-    const int ii = random(); // ii²»ÊÇ³£Á¿±í´ïÊ½
+    constexpr int  i = 32;  //å¿…é¡»ç”¨å¸¸é‡è¡¨ç¤ºå¼èµ‹å€¼ï¼›
+    const int ii = random(); // iiä¸æ˜¯å¸¸é‡è¡¨è¾¾å¼
 
-    //constexpr int iii = random();//²»ÕıÈ·¸³Öµ£»iii²»ÊÇ³£Á¿±íÊ¾Ê½£»
+    //constexpr int iii = random();//ä¸æ­£ç¡®èµ‹å€¼ï¼›iiiä¸æ˜¯å¸¸é‡è¡¨ç¤ºå¼ï¼›
     cout << "constexpr: " << i <<endl;
 
-    constexpr char *str ="wangwei"; //str ÊÇ³£Á¿Ö¸Õë;*strÖĞÄÚÈİ¿É±ä£»constexprÖ±½ÓĞŞÊÎstr±äÁ¿£»
-    const char *str2 = "wangwei2";  //str2 ÊÇÖ¸Ïò×Ö·û´®³£Á¿µÄÖ¸Õë, ²»ÊÇ³£Á¿Ö¸Õë£»constĞŞÊÎÊı¾İÀàĞÍ
+    constexpr char *str ="wangwei"; //str æ˜¯å¸¸é‡æŒ‡é’ˆ;*strä¸­å†…å®¹å¯å˜ï¼›constexprç›´æ¥ä¿®é¥°strå˜é‡ï¼›
+    const char *str2 = "wangwei2";  //str2 æ˜¯æŒ‡å‘å­—ç¬¦ä¸²å¸¸é‡çš„æŒ‡é’ˆ, ä¸æ˜¯å¸¸é‡æŒ‡é’ˆï¼›constä¿®é¥°æ•°æ®ç±»å‹
     cout <<"str:" << str <<endl;
 
-    //c++ 11 using :±ğÃûµÄ¶¨Òå
+    //c++ 11 using :åˆ«åçš„å®šä¹‰
     typedef char *string_c1;
-    using string_c2 = char *;  //C++ 11 µÄĞÂÌØĞÔ£¬µÈ¼ÛÓÚÉÏÃæµÄĞ´·¨
-    const string_c1 test = "wangwei test ";   //test ÊÇ³£Á¿Ö¸Õë£»»ù±¾ÀàĞÍÊÇ£ºchar* ÇÒconstĞŞÊÎµÄ¾ÍÊÇ»ù±¾ÀàĞÍ±äÁ¿£¬ËùÒÔ±äÁ¿testÊÇ³£Á¿¡£
+    using string_c2 = char *;  //C++ 11 çš„æ–°ç‰¹æ€§ï¼Œç­‰ä»·äºä¸Šé¢çš„å†™æ³•
+    const string_c1 test = "wangwei test ";   //test æ˜¯å¸¸é‡æŒ‡é’ˆï¼›åŸºæœ¬ç±»å‹æ˜¯ï¼šchar* ä¸”constä¿®é¥°çš„å°±æ˜¯åŸºæœ¬ç±»å‹å˜é‡ï¼Œæ‰€ä»¥å˜é‡testæ˜¯å¸¸é‡ã€‚
     cout <<"c2: " <<test <<endl;
 
-    // c++11 auto :²»ÖªµÀÄ³¸ö±í´ïÊ½µÄÀàĞÍ£¬ÏëÊ¹ÓÃÆä·µ»ØÖµ£¬¿ÉÒÔÊ¹ÓÃauto¶¨ÒåÀàĞÍ£¬±àÒëÆ÷×Ô¶¯¼ÆËã±äÁ¿ÀàĞÍ£»auto±äÁ¿±ØĞëÒª³õÖµ£»
-    auto tt = test;  //tt ÊÇconst char * ÀàĞÍ£¬µ×²ãconst±£Áô£»Èç¹ûÊÇÉÏ²ãconstÔò²»±£Áô
-    const auto t3 = 42 ;  //t3 ÊÇÕûĞÎ³£Á¿
-    const auto &t4 = t3; //t4 ÊÇÕûĞÍ³£Á¿ÒıÓÃ
+    // c++11 auto :ä¸çŸ¥é“æŸä¸ªè¡¨è¾¾å¼çš„ç±»å‹ï¼Œæƒ³ä½¿ç”¨å…¶è¿”å›å€¼ï¼Œå¯ä»¥ä½¿ç”¨autoå®šä¹‰ç±»å‹ï¼Œç¼–è¯‘å™¨è‡ªåŠ¨è®¡ç®—å˜é‡ç±»å‹ï¼›autoå˜é‡å¿…é¡»è¦åˆå€¼ï¼›
+    auto tt = test;  //tt æ˜¯const char * ç±»å‹ï¼Œåº•å±‚constä¿ç•™ï¼›å¦‚æœæ˜¯ä¸Šå±‚conståˆ™ä¸ä¿ç•™
+    const auto t3 = 42 ;  //t3 æ˜¯æ•´å½¢å¸¸é‡
+    const auto &t4 = t3; //t4 æ˜¯æ•´å‹å¸¸é‡å¼•ç”¨
 
-    //c++ 11 decltype :ÏëÊ¹ÓÃÄ³¸ö±äÁ¿µÄÀàĞÍ£¬µ«²»ÏëÊ¹ÓÃÕâ¸ö±äÁ¿£¬¸³³õÖµ£»Ê¹ÓÃdecltype½«±äÁ¿µÄÀàĞÍÌáÈ¡³öÀ´
-    decltype(test) test2 = "szdd"; //test2 ÊÇconst char*ÀàĞÍ
+    //c++ 11 decltype :æƒ³ä½¿ç”¨æŸä¸ªå˜é‡çš„ç±»å‹ï¼Œä½†ä¸æƒ³ä½¿ç”¨è¿™ä¸ªå˜é‡ï¼Œèµ‹åˆå€¼ï¼›ä½¿ç”¨decltypeå°†å˜é‡çš„ç±»å‹æå–å‡ºæ¥
+    decltype(test) test2 = "szdd"; //test2 æ˜¯const char*ç±»å‹
     cout <<"test2: " <<test2 <<endl;
 
 }
@@ -97,51 +98,51 @@ void primer_2_4_5(){
 
 
 /*
- *@brief Ê¹ÓÃËµÃ÷
+ *@brief ä½¿ç”¨è¯´æ˜
  *
- *1¡¢ÒıÓÃµÄÊ¹ÓÃËµÃ÷:
- *   ±ØĞë³õÊ¼»¯£¬ÇÒÖ»ÄÜÓÃ±äÁ¿³õÊ¼»¯
- *   ÀàĞÍ±£³ÖÒ»Ö±
+ *1ã€å¼•ç”¨çš„ä½¿ç”¨è¯´æ˜:
+ *   å¿…é¡»åˆå§‹åŒ–ï¼Œä¸”åªèƒ½ç”¨å˜é‡åˆå§‹åŒ–
+ *   ç±»å‹ä¿æŒä¸€ç›´
  *
  *
  */
 
 void primer_2_3_1(){
 
-//    //ÒıÓÃ
-//    int &iref;  //´íÎó£¬±ØĞëÒª³õÊ¼»¯
+//    //å¼•ç”¨
+//    int &iref;  //é”™è¯¯ï¼Œå¿…é¡»è¦åˆå§‹åŒ–
     int i = 10;
 //    int &iref1 = i; //ok
-//    float &iref2 = i; //´íÎó£¬ÀàĞÍ²»Ò»ÖÂ
-//    int &iref3 = 10; //²»ÄÜÊ¹ÓÃ×ÖÃæÖµ
+//    float &iref2 = i; //é”™è¯¯ï¼Œç±»å‹ä¸ä¸€è‡´
+//    int &iref3 = 10; //ä¸èƒ½ä½¿ç”¨å­—é¢å€¼
 
     int *ptr = &i;
-    int *&r_ptr = ptr; //¶¨Òå²¢³õÊ¼»¯ÁËÖ¸ÏòÖ¸ÕëµÄÒıÓÃ
+    int *&r_ptr = ptr; //å®šä¹‰å¹¶åˆå§‹åŒ–äº†æŒ‡å‘æŒ‡é’ˆçš„å¼•ç”¨
 
-    const int &iref4 = 10; //Ê¹ÓÃconstÏŞ¶¨Ö®ºó£¬¿ÉÒÔÊ¹ÓÃ×ÖÃæÖµ³õÊ¼»¯ÒıÓÃ
+    const int &iref4 = 10; //ä½¿ç”¨consté™å®šä¹‹åï¼Œå¯ä»¥ä½¿ç”¨å­—é¢å€¼åˆå§‹åŒ–å¼•ç”¨
 
 }
 
 
 /*
  * @brief
- * 1.±äÁ¿³õÊ¼»¯µÄ¼¸ÖÖĞÎÊ½
- * 2.±äÁ¿ÃüÃû
+ * 1.å˜é‡åˆå§‹åŒ–çš„å‡ ç§å½¢å¼
+ * 2.å˜é‡å‘½å
  */
 
 void primer_2_2_1(){
 
-    //±äÁ¿³õÊ¼»¯ĞÎÊ½
-    int t1 = 10;  //³£¼û·½Ê½
+    //å˜é‡åˆå§‹åŒ–å½¢å¼
+    int t1 = 10;  //å¸¸è§æ–¹å¼
     int t2 = (10);
-    int t3{10}; //c++11ÖĞµÃµ½È«ÃæÓ¦ÓÃ£»ÓëÏÂÃæµÄÀ¨ºÅÏà±È£¬¶ªÊ§¾«¶ÈÇé¿öÏÂ£¬´íÎó²»Ö´ĞĞ;³õÊ¼»¯ÁĞ±í
-    int t4(10); //Àà¶ÔÏó¶¨Òå³õÊ¼»¯£¬¾­³£ÄÜ¿´µ½£»
+    int t3{10}; //c++11ä¸­å¾—åˆ°å…¨é¢åº”ç”¨ï¼›ä¸ä¸‹é¢çš„æ‹¬å·ç›¸æ¯”ï¼Œä¸¢å¤±ç²¾åº¦æƒ…å†µä¸‹ï¼Œé”™è¯¯ä¸æ‰§è¡Œ;åˆå§‹åŒ–åˆ—è¡¨
+    int t4(10); //ç±»å¯¹è±¡å®šä¹‰åˆå§‹åŒ–ï¼Œç»å¸¸èƒ½çœ‹åˆ°ï¼›
 
     printf("initialization forms:%d %d %d %d",t1, t2, t3, t4);
 
-    //ÃüÃû£¬²»½¨ÒéÇé¿ö
-    int _Test = 10; //_+´óĞ´
-    int __test = 10; //Á½¸ö_¿ªÍ·
+    //å‘½åï¼Œä¸å»ºè®®æƒ…å†µ
+    int _Test = 10; //_+å¤§å†™
+    int __test = 10; //ä¸¤ä¸ª_å¼€å¤´
 
     printf("initialization forms:%d %d",_Test, __test);
 
@@ -151,49 +152,49 @@ void primer_2_2_1(){
 
 /*
  * @brief
- * 1¡¢×ÖÃæÖµ³£Á¿µÄ±íÊ¾
- * 2¡¢²»Í¬½øÖÆ±íÊ¾£¬´òÓ¡
- * 3¡¢×ªÒÆĞòÁĞ
+ * 1ã€å­—é¢å€¼å¸¸é‡çš„è¡¨ç¤º
+ * 2ã€ä¸åŒè¿›åˆ¶è¡¨ç¤ºï¼Œæ‰“å°
+ * 3ã€è½¬ç§»åºåˆ—
  */
 
 void primer_2_1_3(){
 
-    //½øÖÆ£¬ÕûĞÍºÍ¸¡µã×ÖÃæÖµ³£Á¿
-    int l_int = 0x17;//16½øÖÆ,±êÊ¶:0x
-    int o_int = 010; //8½øÖÆ,±êÊ¶:0 Ò²¾ÍÊÇËµ£¬²»ÄÜËæ±ãÒÔ0¿ªÍ·±íÊ¾Ò»¸öÊı¾İ£¬»á±»¿´×ö8½øÖÆµÄ¡£
-    double l_double = 12.30E4F; //Ë«¾«¶È¸¡µã£¬E±êÊ¶Ö¸Êı£¬F±êÊ¶ÊÇ¸¡µãÀàĞÍ
+    //è¿›åˆ¶ï¼Œæ•´å‹å’Œæµ®ç‚¹å­—é¢å€¼å¸¸é‡
+    int l_int = 0x17;//16è¿›åˆ¶,æ ‡è¯†:0x
+    int o_int = 010; //8è¿›åˆ¶,æ ‡è¯†:0 ä¹Ÿå°±æ˜¯è¯´ï¼Œä¸èƒ½éšä¾¿ä»¥0å¼€å¤´è¡¨ç¤ºä¸€ä¸ªæ•°æ®ï¼Œä¼šè¢«çœ‹åš8è¿›åˆ¶çš„ã€‚
+    double l_double = 12.30E4F; //åŒç²¾åº¦æµ®ç‚¹ï¼ŒEæ ‡è¯†æŒ‡æ•°ï¼ŒFæ ‡è¯†æ˜¯æµ®ç‚¹ç±»å‹
     long double l_double2 = 12.223e9F;
 
     printf("int literal : %o,%d,%x,%lf\n", l_int,l_int,l_int,l_double);
     printf("int literal : %o,%d,%x,%.5Lf\n", o_int,o_int,o_int,l_double2);
-    //×ªÒåĞòÁĞ
+    //è½¬ä¹‰åºåˆ—
     bool literal_bool = true;
     char liter_char1 = 'M';
-    char liter_char2 = '\115';  //·º×ªÒå£¬°Ë½øÖÆ×î¶à3¸öÊı×Ö±êÊ¶Ò»¸ö×Ö·û£»
-    char liter_char3 = '\x4d';   //Ê®Áù½øÖÆ
-    char *ptr = NULL;  //¿ÕÖ¸Õë¸³³õÖµÊ¹ÓÃ£º0 £¬NULL£¬À´³õÊ¼»¯Îª¿ÕÖ¸Õë£»
-    char *ptr2 = nullptr;   // c++ 11 ÖĞÒıÈëÁË£ºnullptr À´³õÊ¼»¯¿ÕÖ¸Õë£¬ĞÂ±ê×¼ÏÂÍÆ¼öÊ¹ÓÃ£»
-    const char *liter_str = u8"hello world";   //Ö¸¶¨ÁË×Ö·û´®µÄ×ÖÃæ³£Á¿Öµ±àÂë¸ñÊ½£¬ÊÇutf8
+    char liter_char2 = '\115';  //æ³›è½¬ä¹‰ï¼Œå…«è¿›åˆ¶æœ€å¤š3ä¸ªæ•°å­—æ ‡è¯†ä¸€ä¸ªå­—ç¬¦ï¼›
+    char liter_char3 = '\x4d';   //åå…­è¿›åˆ¶
+    char *ptr = NULL;  //ç©ºæŒ‡é’ˆèµ‹åˆå€¼ä½¿ç”¨ï¼š0 ï¼ŒNULLï¼Œæ¥åˆå§‹åŒ–ä¸ºç©ºæŒ‡é’ˆï¼›
+    char *ptr2 = nullptr;   // c++ 11 ä¸­å¼•å…¥äº†ï¼šnullptr æ¥åˆå§‹åŒ–ç©ºæŒ‡é’ˆï¼Œæ–°æ ‡å‡†ä¸‹æ¨èä½¿ç”¨ï¼›
+    const char *liter_str = u8"hello world";   //æŒ‡å®šäº†å­—ç¬¦ä¸²çš„å­—é¢å¸¸é‡å€¼ç¼–ç æ ¼å¼ï¼Œæ˜¯utf8
 
     cout << "result:" << liter_char1 << liter_char2 << liter_char3  << liter_str <<endl;
 
     /*
-     * ¼¼Êõtopic£º
+     * æŠ€æœ¯topicï¼š
      *
-     * 1¡¢±àÒëc++ 11 ±ê×¼µÄ³ÌĞò£¿ -std=c++0x
+     * 1ã€ç¼–è¯‘c++ 11 æ ‡å‡†çš„ç¨‹åºï¼Ÿ -std=c++0x
      *    g++ -std=c++0x -I "D:\workspace\primer_5\inc" -O0 -g3 -Wall -c -fmessage-length=0
      *
-     * 2¡¢×ÖÃæÖµ³£Á¿£¬´æ´¢ÔÚ½ø³ÌÔËĞĞ¿Õ¼äÖĞÄÄ¸ö²¿·Ö£¿
+     * 2ã€å­—é¢å€¼å¸¸é‡ï¼Œå­˜å‚¨åœ¨è¿›ç¨‹è¿è¡Œç©ºé—´ä¸­å“ªä¸ªéƒ¨åˆ†ï¼Ÿ
      *    .txt,.data,.bss,heap,stack
-     *    ´æ·ÅÔÚ´úÂë¶Î(.txt),±ÈÈç"hello world";µ«liter_strÕâ¸ö±äÁ¿±¾Éí·ÅÔÚstack¶Î£»
-     *    liter_str[1] = 'a';  //»á±¨¶Î´íÎó
+     *    å­˜æ”¾åœ¨ä»£ç æ®µ(.txt),æ¯”å¦‚"hello world";ä½†liter_strè¿™ä¸ªå˜é‡æœ¬èº«æ”¾åœ¨stackæ®µï¼›
+     *    liter_str[1] = 'a';  //ä¼šæŠ¥æ®µé”™è¯¯
      */
 
-    //À©Õ¹½ø³ÌÔËĞĞ¿Õ¼äµÄÀí½â
+    //æ‰©å±•è¿›ç¨‹è¿è¡Œç©ºé—´çš„ç†è§£
 
-    char *str1 = get_str_1();// ³ö´í£¬Stack¶ÎÖĞµÄÊı¾İÔÚº¯ÊıÍË³öÊ±¾ÍÏú»ÙÁË
-    char *str2 = get_str_2();//ÕıÈ·£¬Ö¸ÏòText¶ÎÖĞµÄ×Ö·ûÖ±½ÓÁ¿£¬ÍË³ö³ÌĞòºó²Å»á»ØÊÕ
-    char *str3 = get_str_3();//ÕıÈ·£¬Ö¸ÏòHeap¶ÎÖĞµÄÊı¾İ£¬»¹Ã»free()/delete
+    char *str1 = get_str_1();// å‡ºé”™ï¼ŒStackæ®µä¸­çš„æ•°æ®åœ¨å‡½æ•°é€€å‡ºæ—¶å°±é”€æ¯äº†
+    char *str2 = get_str_2();//æ­£ç¡®ï¼ŒæŒ‡å‘Textæ®µä¸­çš„å­—ç¬¦ç›´æ¥é‡ï¼Œé€€å‡ºç¨‹åºåæ‰ä¼šå›æ”¶
+    char *str3 = get_str_3();//æ­£ç¡®ï¼ŒæŒ‡å‘Heapæ®µä¸­çš„æ•°æ®ï¼Œè¿˜æ²¡free()/delete
 
     cout <<"str3:" <<str3 <<endl;
     if (str3!=NULL){
@@ -202,35 +203,35 @@ void primer_2_1_3(){
 }
 
 /*
- * @brief signed¡¢unsigned Çø±ğ
+ * @brief signedã€unsigned åŒºåˆ«
  */
 void primer_2_1_2(){
 
 
-    //1¡¢ÎóÓÃunsigned,µ¼ÖÂËÀÑ­»·case¡£
+    //1ã€è¯¯ç”¨unsigned,å¯¼è‡´æ­»å¾ªç¯caseã€‚
 
     /*
     cout << "endless loop case, illustration" << endl;
     for (unsigned int i = 3; i >= 0; i--){
         cout << "integer i: " << i << endl;
-        //ÎªÉ¶»áËÀ£¿
+        //ä¸ºå•¥ä¼šæ­»ï¼Ÿ
     }
     */
 
 
-    //2¡¢±àÒëÆ÷ÒşÊ½Êı¾İÀàĞÍ×ª»»£ºsigned -> unsigned  µ¼ÖÂÊı¾İÒç³ö
+    //2ã€ç¼–è¯‘å™¨éšå¼æ•°æ®ç±»å‹è½¬æ¢ï¼šsigned -> unsigned  å¯¼è‡´æ•°æ®æº¢å‡º
 
     unsigned int i = -6;
-    cout << "i + 5 = " << i + 5 << endl; //»áµÃµ½-1µÄ½á¹ûÂğ£¿
+    cout << "i + 5 = " << i + 5 << endl; //ä¼šå¾—åˆ°-1çš„ç»“æœå—ï¼Ÿ
 
     cout << "the max unsigned int: " << INT_MAX << endl;
 
 }
 
 /*
- * @biref c++11ÄÚÖÃÊı¾İÀàĞÍ,Õ¼ÓÃ×Ö½ÚºÍ±íÊ¾·¶Î§
+ * @biref c++11å†…ç½®æ•°æ®ç±»å‹,å ç”¨å­—èŠ‚å’Œè¡¨ç¤ºèŒƒå›´
  *
- * numeric_limits<TYTPE> c++11Ä£°åÀà±íÊ¾»ù±¾Êı¾İÀàĞÍ·¶Î§:<limits>
+ * numeric_limits<TYTPE> c++11æ¨¡æ¿ç±»è¡¨ç¤ºåŸºæœ¬æ•°æ®ç±»å‹èŒƒå›´:<limits>
  *
  */
 
@@ -239,24 +240,24 @@ void primer_2_1_1(){
     //boolean
     cout << "bool bytes: " << sizeof(bool) << endl;
 
-    //×Ö·ûÀàĞÍ
+    //å­—ç¬¦ç±»å‹
     char ch_1 = 'A';
-    wchar_t wch_1 = L'w';//¿í×Ö·ûÀàĞÍ£ºL
-    char16_t ch16_1 = u'w'; //Ö§³ÖunicodeÀ©Õ¹±àÂë£¬u
-    char32_t ch32_1 = U'w'; //Ö§³ÖunicodeÀ©Õ¹±àÂë£¬U
+    wchar_t wch_1 = L'w';//å®½å­—ç¬¦ç±»å‹ï¼šL
+    char16_t ch16_1 = u'w'; //æ”¯æŒunicodeæ‰©å±•ç¼–ç ï¼Œu
+    char32_t ch32_1 = U'w'; //æ”¯æŒunicodeæ‰©å±•ç¼–ç ï¼ŒU
 
     std::cout <<"char bytes:"  << sizeof(ch_1) << " rang:" << static_cast<int>(numeric_limits<char>::min()) << "~" << static_cast<int>(numeric_limits<char>::max()) << endl;
     std::cout << "wchar_t bytes: " << sizeof(wch_1) << " rang:" << numeric_limits<wchar_t>::min() << "~" << numeric_limits<wchar_t>::max() << endl;
     std::cout << "char16_t bytes: " << sizeof(ch16_1) << " rang:" << numeric_limits<char16_t>::min() << "~" << numeric_limits<char16_t>::max() << endl;
     std::cout << "char32_t bytes: " << sizeof(ch32_1) << " rang:" << numeric_limits<char32_t>::min() << "~" << numeric_limits<char32_t>::max() << endl;
 
-    //unsigned short¡¢short
+    //unsigned shortã€short
 
     cout << "unsigned int bytes: " << sizeof(unsigned int) << " rang:"<< numeric_limits<unsigned int>::min() << "~" << numeric_limits<unsigned int>::max() << endl;
     cout << "int bytes: " << sizeof(int) << " rang:"<< numeric_limits<int>::min() << "~" << numeric_limits<int>::max() << endl;
 
 
-    //unsigned int¡¢int
+    //unsigned intã€int
     cout << "unsigned int bytes: " << sizeof(unsigned int) << " rang:"<< numeric_limits<unsigned int>::min() << "~" << numeric_limits<unsigned int>::max() << endl;
     cout << "int bytes: " << sizeof(int) << " rang:"<< numeric_limits<int>::min() << "~" << numeric_limits<int>::max() << endl;
 
@@ -273,7 +274,77 @@ void primer_2_1_1(){
     cout << "double bytes: " << sizeof(double) << " rang:"<< numeric_limits<double>::min() << "~" << numeric_limits<double>::max() << " epsilon: " << numeric_limits<double>::epsilon()<< " digits: " <<numeric_limits<double>::digits << endl;
     cout << "long double bytes: " << sizeof(long double) << " rang:"<< numeric_limits<long double>::min() << "~" << numeric_limits<long double>::max() << " epsilon: " << numeric_limits<long double>::epsilon()<< " digits: " <<numeric_limits<long double>::digits << endl;
 
+
 }
 
+/*
+ * æ‰©å±•ï¼š
+ * å®½å­—ç¬¦ç±»å‹ï¼šwchar_t  -ã€‹  wstring
+ *
+ * åŒºåˆ«ï¼š wstring  string
+ *
+ * wstring : æ¯ä¸ªå…ƒç´ å 2ä¸ªå­—èŠ‚ï¼Œå¾ªç¯æ—¶1ä¸ªå•ä½å°±æ˜¯è·¨è¶Šä¸¤ä¸ªå­—èŠ‚
+ *
+ *
+ */
+
+#define tab "\t";
+
+void primer_2_extend() {
+
+    locale def;
+    cout << def.name() << endl;
+    locale current = cout.getloc();
+    cout << current.name() << endl;
+
+    float val = 1234.56;
+    cout << val << endl;
+
+    //chage to french/france
+    cout.imbue(locale("chs"));
+    current = cout.getloc();
+    cout << current.name() << endl;
+    cout << val << endl;
+
+    //ä¸Šé¢æ˜¯è¯´æ˜localeçš„ç”¨æ³•ï¼Œä¸‹é¢æ‰æ˜¯æœ¬ä¾‹çš„å†…å®¹ï¼Œå› ä¸ºå…¶ä¸­ç”¨åˆ°äº†imbueå‡½æ•°
+    cout << "*********************************" << endl;
+
+    //ä¸ºäº†ä¿è¯æœ¬åœ°åŒ–è¾“å‡ºï¼ˆæ–‡å­—/æ—¶é—´/è´§å¸ç­‰ï¼‰ï¼Œchsè¡¨ç¤ºä¸­å›½ï¼Œwcoutå¿…é¡»ä½¿ç”¨æœ¬åœ°åŒ–è§£æç¼–ç 
+    wcout.imbue(std::locale("chs"));
+
+    //string è‹±æ–‡ï¼Œæ­£ç¡®é¢ å€’ä½ç½®ï¼Œæ˜¾ç¤ºç¬¬äºŒä¸ªå­—ç¬¦æ­£ç¡®
+    string str1("ABCabc");
+    string str11(str1.rbegin(), str1.rend());
+    cout << "UK\ts1\t:" << str1 << "\t" << str1[1] << "\t" << str11 << endl;
+
+    //wstring è‹±æ–‡ï¼Œæ­£ç¡®é¢ å€’ä½ç½®ï¼Œæ˜¾ç¤ºç¬¬äºŒä¸ªå­—ç¬¦æ­£ç¡®
+    wstring str2 = L"ABCabc";
+    wstring str22(str2.rbegin(), str2.rend());
+    wcout << "UK\tws4\t:" << str2 << "\t" << str2[1] << "\t" << str22 << endl;
+
+    //string ä¸­æ–‡ï¼Œé¢ å€’åï¼Œå˜æˆä¹±ç ï¼Œç¬¬äºŒä¸ªå­—ç¬¦è¯»å–ä¹Ÿé”™è¯¯
+    string str3("ä½ å¥½ä¹ˆï¼Ÿ");
+    string str33(str3.rbegin(), str3.rend());
+    cout << "CHN\ts3\t:" << str3 << "\t" << str3[1] << "\t" << str33 << endl;
+
+    //æ­£ç¡®çš„æ‰“å°ç¬¬äºŒä¸ªå­—ç¬¦çš„æ–¹æ³•
+    cout << "CHN\ts3\t:RIGHT\t" << str3[2] << str3[3] << endl;
+
+    //ä¸­æ–‡ï¼Œæ­£ç¡®é¢ å€’ä½ç½®ï¼Œæ˜¾ç¤ºç¬¬äºŒä¸ªå­—ç¬¦æ­£ç¡®
+    //std::wstring str4=L"ä½ å¥½";
+    //wstring str44(str4.rbegin(),str4.rend());
+    //wcout<<"CHN\tws4\t:"<<str4<<"\t"<<str4[1]<<"\t"<<str44<<endl;
+
+    //åªæœ‰charç±»å‹çš„stringæ—¶æ‰å¯ä»¥å¦‚æ­¤æ„é€ 
+    wstring str5(str1.begin(), str1.end());
+    wstring str55(str5.rbegin(), str5.rend());
+    wcout << "CHN\tws5\t:" << str5 << "\t" << str5[1] << "\t" << str55 << endl;
+
+    //å¦‚æ­¤æ„é€ å°†å¤±è´¥!!!!
+    wstring str6(str3.begin(), str3.end());
+    wstring str66(str6.rbegin(), str6.rend());
+    wcout << "CHN\tws6\t:" << str6 << "\t" << str6[1] << "\t" << str66 << endl;
+
+}
 
 

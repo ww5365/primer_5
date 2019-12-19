@@ -82,8 +82,6 @@ void test_10_bind(){
     ++number;
     newf2("world2"); //默认绑定的参数number，是传引用；所以这里是调用时的真实值
 
-
-
     /*
      * 绑定一个对象的成员函数
      *
@@ -91,11 +89,14 @@ void test_10_bind(){
      *
      */
 
-
     Object obj("wang");
     typedef function<void(const string &s)> FunType2;
     FunType2 newf3 = std::bind(&Object::printObject, &obj, std::placeholders::_1);
     newf3("wangwei"); //等价调用: obj.printObject("wangwei");
+
+    /*
+     * 离线建库代码中，有使用 bind
+     */
 
 
 }

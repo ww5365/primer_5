@@ -61,6 +61,19 @@
  *
  *   迭代器不支持： it += 2  移动迭代器多个位置的操作吗？
  *
+ *   常见的操作迭代器的操作：
+ *
+ *   std::begin()   std::end()
+ *
+ *   std::distance(itor1，itor2);
+ *
+ *   std::advance(itor, n);  //itor向后移动 n 个位置；itor 的值改变；（n<0 的话，向前移动）
+ *
+ *   c++11 : 支持
+ *  new_itor next(itor, n)  ; //itor向后移动 n 个位置；itor 不改变，返回值是：最新的位置迭代器；
+ *  new_itor pre(itor, n) ; //itor向前移动 n 个位置；itor 不改变，返回值是：最新的位置迭代器；
+ *
+ *
  * 4、初始化，赋值， swap
  *
  *    C c1(c2)
@@ -302,6 +315,35 @@ void test_9(){
     std::cout << "test2:" << str_other << std::endl;
     std::cout << "pos:" << pos << std::endl;
 
+
+
+
+    /*
+     * 迭代器的使用
+     */
+
+    std::vector<int> vec1{1,2,3,4,5,6};
+
+    auto itor_start = vec1.begin();
+
+    auto itor_end = vec1.end();
+
+    //itor_start 不会改变，最新的迭代器通过返回值返回
+    auto itor_new = std::next(itor_start, 2);
+    auto itor_end_new = std::prev(itor_end, 1);
+
+    std::cout << "iterator using: " << *itor_start << std::endl;
+    std::cout << "iterator using: " << *itor_new << std::endl;
+    std::cout << "iterator using: " << *itor_end_new << std::endl;
+
+    //itor_start自身会发生改变
+    std::advance(itor_start, 2);
+    std::cout << "iterator using: " << *itor_start << std::endl;
+
+    //back() 返回最后一个元素，不是返回迭代器
+    //auto itor_back = vec1.back(); //错误
+
+    std::cout << "get last element: " << vec1.back() << std::endl;
 
 
 

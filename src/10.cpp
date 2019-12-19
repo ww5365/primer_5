@@ -198,12 +198,26 @@ void test_10(){
 
     copy(begin(vec_s), end(vec_s), it_start);
 
+    cout << "copy vector into another: " << endl;
     for (auto elem : vec_b){
-        cout << "copy vector into another: " << elem << endl;
+
+        cout << elem <<  " ";
+        //结果：1 2 3 8 9 10 11
     }
 
+    cout << std::endl;
 
+    //如果要拷贝到某个容器之后，不覆盖原来值；需要插入迭代器
+    std::copy(std::begin(vec_b), std::end(vec_b), std::back_inserter(vec_s));
 
+    cout << "copy vector into another2: " << endl;
+
+    for (auto elem : vec_s){
+        cout << elem <<  " ";
+        //运行结果：13 9 10 11 12 13 1 2 3 8 9 10 11
+        //常规思路结果：8 9 10 11 12 13 1 2 3 8 9 10 11   为什么第一个值变化了？初步分析是：第一次 copy 导致溢出。
+    }
+    cout << std::endl;
 
 
     /*
@@ -501,6 +515,59 @@ void test_10(){
 
         cout << "the splice: " << e << endl;
     }
+
+    /*
+     *
+     * 求有序集合的交，并，补集；
+     * 注意：有序集合
+     * set_intersection
+     *
+     */
+
+    //A^B
+    std::vector<int> vector1{ 1, 3, 4, 6, 9 };
+    std::vector<int> vector2{ 2, 4, 6, 8, 9 };
+    std::vector<int> result;
+
+    std::set_intersection(
+        vector1.begin(), vector1.end(),  //第一个区间
+        vector2.begin(), vector2.end(),  //第二个区间
+        std::back_inserter(result)
+    );
+
+    result.clear();
+
+    //AUB
+    std::set_union(
+        vector1.begin(), vector1.end(),  //第一个区间
+        vector2.begin(), vector2.end(),  //第二个区间
+        std::back_inserter(result)
+    );
+
+    //第一个区间去除第二区间：A-B
+    std::set_difference(
+        vector1.begin(), vector1.end(),  //第一个区间
+        vector2.begin(), vector2.end(),  //第二个区间
+        std::back_inserter(result)
+    );
+
+    vector<string> v1{"美食", "火锅店"};
+    vector<string> v2{"美食", "牛肉面"};
+    vector<string> result_s;
+    sort(v1.begin(), v1.end());
+    sort(v2.begin(), v2.end());
+    std::set_intersection(v1.begin(), v1.end(),
+                          v2.begin(), v2.end(), back_inserter(result_s));
+
+    for (auto str : result_s){
+
+        cout << "intersection: " << str << " len: " << str.size() << endl;
+
+        for (auto e : str){
+            cout << "each elem: " << e << endl;
+        }
+    }
+
 
 
 }

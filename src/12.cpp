@@ -242,6 +242,8 @@ void test_12(){
      *
      *      p.reset(q.realease()) :  转移控制权：q置空，释放控制权；并将原来内存指针重指到p上；发生控制权的转移；
      *
+     *      设计单例模式时: 可以使用独占指针，指向统一的数据处理类
+     *
      */
     unique_ptr<vector<string>> str_ptr(new vector<string>(10, "test"));
 

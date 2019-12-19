@@ -32,20 +32,21 @@ int main(){
 
     //cout << "hello word!" <<endl;
     //primer_2_2_1();
+    primer_2_1_1();
 
-    int res= 0;
-    std::string str = "-4c";
-    hex_2_dec(str,res);
-    cout <<"hex: " << str << " to: " <<res <<endl;
+//    int res= 0;
+//    std::string str = "-4c";
+//    hex_2_dec(str,res);
+//    cout <<"hex: " << str << " to: " <<res <<endl;
     //test_6();
     //test_7();
     //test_8();
     //test_9();
-    test_10();
+     test_10();
 
     //test_10_bind();
 
-    test_11();
+    //test_11();
 
     //test_12();
 
